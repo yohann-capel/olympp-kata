@@ -1,0 +1,7 @@
+<select style="width: 100%">
+  @for(bankAccount of bankAccounts; track bankAccount.id) {
+  <option (click)="goTo(bankAccount.id)">
+    ID: {{ bankAccount.id }}, Balance: {{ bankAccount.balance }}
+  </option>
+  }
+</select>

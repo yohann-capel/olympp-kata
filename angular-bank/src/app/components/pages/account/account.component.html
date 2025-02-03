@@ -1,0 +1,61 @@
+<div style="display: flex; flex-direction: column; align-items: center">
+  @if(bankAccount !== null) {
+  <table
+    border="3"
+    style="
+      width: 70%;
+      table-layout: fixed;
+      margin-bottom: 10px;
+      background-color: lightgoldenrodyellow;
+    "
+  >
+    <thead>
+      <tr>
+        <th>Account ID</th>
+        <th>Balance</th>
+        <th>Change Account</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ bankAccount.id }}</td>
+        <td>{{ bankAccount.balance }}</td>
+        <td><app-select-account></app-select-account></td>
+      </tr>
+    </tbody>
+  </table>
+  <table
+    border="3"
+    style="width: 70%; table-layout: fixed; margin-bottom: 10px"
+  >
+    <thead>
+      <tr>
+        <td>
+          <input [(ngModel)]="inputValue" type="number" style="width: 90%" />
+        </td>
+        <td>
+          <button
+            (click)="deposit({ amount: inputValue, accountId: bankAccount.id })"
+          >
+            Deposit
+          </button>
+        </td>
+        <td>
+          <button
+            (click)="
+              withdraw({ amount: inputValue, accountId: bankAccount.id })
+            "
+          >
+            Withdraw
+          </button>
+        </td>
+        <td><button (click)="print(bankAccount.id)">Print</button></td>
+      </tr>
+    </thead>
+  </table>
+  <app-statements-displayer
+    style="width: 70%"
+    [statements]="bankAccount.statements"
+  ></app-statements-displayer>
+  }
+</div>
