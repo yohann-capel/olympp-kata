@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../../services/account.service';
 import { BankAccount } from '../../../models/bank-account';
 import { StatementsDisplayerComponent } from '../../shared/statements-displayer/statements-displayer.component';
@@ -21,7 +21,8 @@ export class AccountComponent {
   constructor(
     private route: ActivatedRoute,
     private accountService: AccountService,
-    private printService: PrintService
+    private printService: PrintService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -36,6 +37,7 @@ export class AccountComponent {
         },
         error: (err) => {
           alert(err.error);
+          this.router.navigate(['']);
         },
       });
     }

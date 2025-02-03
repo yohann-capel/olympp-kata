@@ -2,6 +2,8 @@
   <button (click)="initAccount()" style="margin-bottom: 20px; width: 10%">
     Create account
   </button>
+  @if(bankAccounts.length !== 0) {
   <div style="margin-bottom: 5px">Or go to account :</div>
   <app-select-account></app-select-account>
+  }
 </div>
